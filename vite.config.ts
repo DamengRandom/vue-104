@@ -13,7 +13,14 @@ export default defineConfig({
     vueDevTools(),
   ],
   server: {
-    port: 4378
+    port: 4378,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3782', // api proxy, so inside codebase, can do /api/jobs/...
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, '')
+      },
+    },
   },
   resolve: {
     alias: {

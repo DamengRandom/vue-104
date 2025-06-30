@@ -8,11 +8,16 @@
     "build": "run-p type-check \"build-only {@}\" --",
     "preview": "vite preview",
     "build-only": "vite build",
-    "type-check": "vue-tsc --build"
+    "type-check": "vue-tsc --noEmit",
+    "server": "json-server --watch src/jobs.json --port 3782"
   },
   "dependencies": {
+    "axios": "^1.10.0",
     "primeicons": "^7.0.0",
-    "vue": "^3.5.17"
+    "vue": "^3.5.17",
+    "vue-router": "^4.5.1",
+    "vue-spinner": "^1.0.4",
+    "vue-toastification": "^2.0.0-rc.5"
   },
   "devDependencies": {
     "@tsconfig/node22": "^22.0.2",
@@ -21,6 +26,7 @@
     "@vitejs/plugin-vue-jsx": "^5.0.0",
     "@vue/tsconfig": "^0.7.0",
     "autoprefixer": "^10.4.21",
+    "json-server": "^1.0.0-beta.3",
     "npm-run-all2": "^8.0.4",
     "postcss": "^8.5.6",
     "tailwindcss": "^3.4.17",

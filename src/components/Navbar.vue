@@ -1,8 +1,13 @@
 <script setup>
   import logo from '@/assets/img/logo.png';
-  import { ref } from 'vue';
+  import { ref, computed } from 'vue';
+  import { RouterLink, useRoute } from 'vue-router';
 
   const logoFile = ref(logo);
+  const currentPath = ref('/');
+  const route = useRoute();
+
+  const isActiveTab = (clickedPath) => route.path === clickedPath;
 </script>
 
 <template>
@@ -13,29 +18,29 @@
           class="flex flex-1 items-center justify-center md:items-stretch md:justify-start"
         >
           <!-- Logo -->
-          <a class="flex flex-shrink-0 items-center mr-4" href="index.html">
+          <RouterLink class="flex flex-shrink-0 items-center mr-4" to="/">
             <img class="h-10 w-auto" :src="logoFile" alt="Vue Jobs" />
             <span class="hidden md:block text-white text-2xl font-bold ml-2"
               >Vue Jobs</span
             >
-          </a>
+          </RouterLink>
           <div class="md:ml-auto">
             <div class="flex space-x-2">
-              <a
-                href="index.html"
-                class="text-white bg-base hover:bg-gray-900 hover:text-white rounded-md px-3 py-2"
-                >Home</a
-              >
-              <a
-                href="jobs.html"
+              <RouterLink
+                to="/"
                 class="text-white hover:bg-base hover:text-white rounded-md px-3 py-2"
-                >Jobs</a
-              >
-              <a
-                href="add-job.html"
+                :class="isActiveTab('/') ? 'bg-base' : ''"
+                >Home</RouterLink>
+              <RouterLink
+                to="/jobs"
                 class="text-white hover:bg-base hover:text-white rounded-md px-3 py-2"
-                >Add Job</a
-              >
+                :class="isActiveTab('/jobs') ? 'bg-base' : ''"
+                >Jobs</RouterLink>
+              <RouterLink
+                to="/jobs/add"
+                class="text-white hover:bg-base hover:text-white rounded-md px-3 py-2"
+                :class="isActiveTab('/jobs/add') ? 'bg-base' : ''"
+                >Add Job</RouterLink>
             </div>
           </div>
         </div>
