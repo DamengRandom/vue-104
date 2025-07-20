@@ -41,6 +41,11 @@
                 class="text-white hover:bg-base hover:text-white rounded-md px-3 py-2"
                 :class="isActiveTab('/jobs/add') ? 'bg-base' : ''"
                 >Add Job</RouterLink>
+              <RouterLink
+                to="/element-plus"
+                class="text-white hover:bg-base hover:text-white rounded-md px-3 py-2"
+                :class="isActiveTab('/element-plus') ? 'bg-base' : ''"
+                >Element Plus Study</RouterLink>
             </div>
           </div>
         </div>

@@ -5,6 +5,7 @@ import NotFound from '@/views/NotFound.vue';
 import JobView from '@/views/JobView.vue';
 import AddJobView from '@/views/AddJobView.vue';
 import EditJobView from '@/views/EditJobView.vue';
+import ElementPlus from '@/components/ElementPlus.vue';
 
 const router = createRouter({
   history: createWebHistory(),
@@ -38,6 +39,11 @@ const router = createRouter({
       path: '/:catchAll(.*)',
       name: 'not-found',
       component: NotFound
+    },
+    {
+      path: '/element-plus',
+      name: 'element-plus',
+      component: ElementPlus
     }
   ],
 });
