@@ -46,6 +46,11 @@
                 class="text-white hover:bg-base hover:text-white rounded-md px-3 py-2"
                 :class="isActiveTab('/element-plus') ? 'bg-base' : ''"
                 >Element Plus Study</RouterLink>
+              <RouterLink
+                to="/avoid-mistake"
+                class="text-white hover:bg-base hover:text-white rounded-md px-3 py-2"
+                :class="isActiveTab('/avoid-mistake') ? 'bg-base' : ''"
+                >Avoid Mistake</RouterLink>
             </div>
           </div>
         </div>

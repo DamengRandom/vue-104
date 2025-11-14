@@ -44,6 +44,11 @@ const router = createRouter({
       path: '/element-plus',
       name: 'element-plus',
       component: ElementPlus
+    },
+    {
+      path: '/avoid-mistake',
+      name: 'avoid-mistake',
+      component: () => import('@/views/AvoidMistakeView.vue')
     }
   ],
 });
