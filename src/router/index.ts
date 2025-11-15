@@ -49,6 +49,11 @@ const router = createRouter({
       path: '/avoid-mistake',
       name: 'avoid-mistake',
       component: () => import('@/views/AvoidMistakeView.vue')
+    },
+    {
+      path: '/vue-table-test',
+      name: 'vue-table-test',
+      component: () => import('@/views/VueTable/VueTableTest.vue')
     }
   ],
 });
