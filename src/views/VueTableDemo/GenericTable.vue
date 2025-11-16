@@ -1,84 +1,34 @@
 
 <script setup>
-import people from '@/assets/mocks/people.json';
 import {
   useVueTable,
   FlexRender,
   getCoreRowModel,
   getPaginationRowModel,
-  getSortedRowModel
+  getSortedRowModel,
+  getFilteredRowModel
 } from '@tanstack/vue-table';
-import { ref, h } from 'vue';
-import { format } from 'date-fns';
-import EditButton from '@/views/VueTable/EditButton.vue';
+import { ref } from 'vue';
 
-const peopleData = ref(people);
+const props = defineProps({
+  data: Array,
+  columns: Array
+});
+
+const tableData = ref(props.data);
+const tableColumns = ref(props.columns);
 const sorting = ref([]);
+const filterBy = ref('');
 
 const pageSizes = [5, 10, 20, 50, 100];
 
-const columnsPeople = [
-  // {
-  //   "id": 1,
-  //   "first_name": "Leone",
-  //   "last_name": "Sinclair",
-  //   "email": "lsinclair0@mayoclinic.com",
-  //   "title": "Systems Administrator I",
-  //   "role": "Subcontractor",
-  //   "created_at": "2022-11-04T13:02:17Z"
-  // }
-  {
-    "accessorKey": "id",
-    "header": "ID",
-    "enableSorting": false,
-  },
-  // {
-  //   "accessorKey": "first_name",
-  //   "header": "First Name"
-  // },
-  // {
-  //   "accessorKey": "last_name",
-  //   "header": "Last Name"
-  // },
-  {
-    "id": "full_name",
-    "accessorFn": (row) => `${row.first_name} ${row.last_name}`, // Please using accessorFn
-    "header": "Full Name"
-  },
-  {
-    "accessorKey": "email",
-    "header": "Email"
-  },
-  {
-    "accessorKey": "title",
-    "header": "Title"
-  },
-  {
-    "accessorKey": "role",
-    "header": "Role"
-  },
-  {
-    "accessorKey": "created_at",
-    "header": "Created At",
-    "cell": (createdAt) => format(new Date(createdAt.getValue()), 'MMM d, yyyy')
-  },
-  {
-    "accessorKey": "edit",
-    "header": "",
-    "enableSorting": false,
-    // "cell": (cellData) => h(EditButton, { onClick: () => {
-    //   console.log('Edit', cellData.row.getAllCells().map(cell => cell.getValue()));
-    // }})
-    "cell": ({ row }) => h(EditButton, { id: row.original.id })
-  },
-]; // this is the array of column headers
-
 const vueTable = useVueTable({
-  data: peopleData.value,
-  columns: columnsPeople,
+  data: tableData.value,
+  columns: tableColumns.value,
   getCoreRowModel: getCoreRowModel(),
   getPaginationRowModel: getPaginationRowModel(),
   getSortedRowModel: getSortedRowModel(),
+  getFilteredRowModel: getFilteredRowModel(),
   initialState: {
     pagination: {
       pageSize: pageSizes[1]
@@ -87,6 +37,9 @@ const vueTable = useVueTable({
   state: {
     get sorting() {
       return sorting.value  
+    },
+    get globalFilter() {
+      return filterBy.value.trim()
     }
   },
   onSortingChange: (updaterOrValue) => {
@@ -94,48 +47,23 @@ const vueTable = useVueTable({
   }
 });
 </script>
+
 <template>
   <div class="px-4 sm:px-6 lg:px-8">
     <div class="mt-8 flow-root">
       <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+          <div class="my-4">
+            <label>Filter: </label>
+            <input
+              type="text"
+              v-model="filterBy"
+              class="px-2 py-2 border border-gray-300 rounded"
+              placeholder="Filter by full name, email, title, or role"
+            />
+          </div>
           <table class="min-w-full divide-y divide-gray-300">
             <thead>
-              <!-- <tr>
-                <th
-                  scope="col"
-                  class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
-                >
-                  First name
-                </th>
-                <th
-                  scope="col"
-                  class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
-                >
-                  Last name
-                </th>
-                <th
-                  scope="col"
-                  class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
-                >
-                  Email
-                </th>
-                <th
-                  scope="col"
-                  class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
-                >
-                  Title
-                </th>
-                <th
-                  scope="col"
-                  class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
-                >
-                  Role
-                </th>
-                <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-0">
-                  <span class="sr-only">Edit</span>
-                </th>
-              </tr> -->
               <tr
                 v-for="headerGroup in vueTable.getHeaderGroups()"
                 :key="headerGroup.id"
@@ -152,7 +80,7 @@ const vueTable = useVueTable({
                     :render="header.column.columnDef.header"
                     :props="header.getContext()"
                   />
-                  {{ 
+                  {{
                     {
                       asc: '↑',
                       desc: '↓',
@@ -177,30 +105,6 @@ const vueTable = useVueTable({
                   />
                 </td>
               </tr>
-              <!-- <tr v-for="person in people" :key="person.id">
-                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                  {{ person.first_name }}
-                </td>
-                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                  {{ person.last_name }}
-                </td>
-                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                  {{ person.email }}
-                </td>
-                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                  {{ person.title }}
-                </td>
-                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                  {{ person.role }}
-                </td>
-                <td
-                  class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0"
-                >
-                  <a href="#" class="text-indigo-600 hover:text-indigo-900"
-                    >Edit<span class="sr-only">, {{ person.name }}</span></a
-                  >
-                </td>
-              </tr> -->
             </tbody>
           </table>
         </div>

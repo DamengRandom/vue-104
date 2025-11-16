@@ -53,7 +53,7 @@ const router = createRouter({
     {
       path: '/vue-table-test',
       name: 'vue-table-test',
-      component: () => import('@/views/VueTable/VueTableTest.vue')
+      component: () => import('@/views/VueTableDemo/PeopleTableDemo.vue')
     }
   ],
 });
