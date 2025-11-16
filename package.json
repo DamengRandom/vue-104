@@ -9,7 +9,9 @@
     "preview": "vite preview",
     "build-only": "vite build",
     "type-check": "vue-tsc --noEmit",
-    "server": "json-server --watch src/jobs.json --port 3782"
+    "server": "json-server --watch src/jobs.json --port 3782",
+    "lint": "eslint . --ext .js,.ts,.vue",
+    "lint:fix": "eslint . --ext .js,.ts,.vue --fix"
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.3.1",
@@ -31,6 +33,10 @@
     "@vitejs/plugin-vue-jsx": "^5.0.0",
     "@vue/tsconfig": "^0.7.0",
     "autoprefixer": "^10.4.21",
+    "@typescript-eslint/eslint-plugin": "^8.12.1",
+    "@typescript-eslint/parser": "^8.12.1",
+    "eslint": "^8.57.0",
+    "eslint-plugin-vue": "^9.21.1",
     "json-server": "^1.0.0-beta.3",
     "npm-run-all2": "^8.0.4",
     "postcss": "^8.5.6",

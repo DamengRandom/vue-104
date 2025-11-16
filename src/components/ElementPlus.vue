@@ -1,15 +1,29 @@
 <template>
-  <el-menu mode="horizontal" :default-active="selectedIndex" @select="selected" active-text-color="lime">
+  <el-menu
+    mode="horizontal"
+    :default-active="selectedIndex"
+    active-text-color="lime"
+    @select="selected"
+  >
     <el-menu-item index="1">
       My Element Plus Study ~
     </el-menu-item>
-    <el-sub-menu index="2" :class="{ 'active-tab': isSubTabActive }">
+    <el-sub-menu
+      index="2"
+      :class="{ 'active-tab': isSubTabActive }"
+    >
       <template #title>
         Elements Tab {{ isSubTabActive ? selectedIndex : '' }}
       </template>
-      <el-menu-item index="2-1">Option 1</el-menu-item>
-      <el-menu-item index="2-2">Option 2</el-menu-item>
-      <el-menu-item index="2-3">Option 3</el-menu-item>
+      <el-menu-item index="2-1">
+        Option 1
+      </el-menu-item>
+      <el-menu-item index="2-2">
+        Option 2
+      </el-menu-item>
+      <el-menu-item index="2-3">
+        Option 3
+      </el-menu-item>
     </el-sub-menu>
     <el-menu-item index="3">
       Menu item 3
@@ -18,153 +32,364 @@
       Menu item 4
     </el-menu-item>
   </el-menu>
-  <h3 class="section">Demo for Breadcrumb</h3>
+  <h3 class="section">
+    Demo for Breadcrumb
+  </h3>
   <el-breadcrumb>
     <el-breadcrumb-item>Home</el-breadcrumb-item>
     <el-breadcrumb-item>Elements Tab</el-breadcrumb-item>
     <el-breadcrumb-item>Option 2</el-breadcrumb-item>
   </el-breadcrumb>
-  <h3 class="section">Demo for Dropdown</h3>
+  <h3 class="section">
+    Demo for Dropdown
+  </h3>
   <el-dropdown @command="userCommand">
     <span>User Profile <el-icon><i-ep-User /></el-icon></span>
     <template #dropdown>
       <el-dropdown-menu>
-        <el-dropdown-item command="settings">Settings</el-dropdown-item>
-        <el-dropdown-item command="logout">Logout</el-dropdown-item>
+        <el-dropdown-item command="settings">
+          Settings
+        </el-dropdown-item>
+        <el-dropdown-item command="logout">
+          Logout
+        </el-dropdown-item>
       </el-dropdown-menu>
     </template>
   </el-dropdown>
-  <h3 class="section">Demo for Tabs</h3>
-  <el-button @click="addNewTab">Add Tab</el-button>
-  <el-tabs v-if="reactiveTabs.arrTabs.length" v-model="selectedTabName" @tab-remove="removeTab" closable type="card" @tab-click="tabClick">
+  <h3 class="section">
+    Demo for Tabs
+  </h3>
+  <el-button @click="addNewTab">
+    Add Tab
+  </el-button>
+  <el-tabs
+    v-if="reactiveTabs.arrTabs.length"
+    v-model="selectedTabName"
+    closable
+    type="card"
+    @tab-remove="removeTab"
+    @tab-click="tabClick"
+  >
     <el-tab-pane 
       v-for="tab in reactiveTabs.arrTabs"
       :key="tab.name" 
       :name="tab.name" 
       :label="tab.label"
-    >{{ tab.content }}</el-tab-pane>
+    >
+      {{ tab.content }}
+    </el-tab-pane>
   </el-tabs>
-  <h3 class="section">Demo for Buttons</h3>
-  <el-button @click="openMsg">Open Message</el-button>
-  <el-button @click="openConfirm">Confirm to delete</el-button>
-  <el-button @click="openNotification">Open Notification</el-button>
-  <h3 class="section">Demo for Inputs - Radios</h3>
+  <h3 class="section">
+    Demo for Buttons
+  </h3>
+  <el-button @click="openMsg">
+    Open Message
+  </el-button>
+  <el-button @click="openConfirm">
+    Confirm to delete
+  </el-button>
+  <el-button @click="openNotification">
+    Open Notification
+  </el-button>
+  <h3 class="section">
+    Demo for Inputs - Radios
+  </h3>
   <div>
     <h4>Single radio select</h4>
-    <el-radio v-model="radio" value="1">Frontend</el-radio>
-    <el-radio v-model="radio" value="2">Backend</el-radio>
-    <el-radio v-model="radio" value="3">Fullstack</el-radio>
+    <el-radio
+      v-model="radio"
+      value="1"
+    >
+      Frontend
+    </el-radio>
+    <el-radio
+      v-model="radio"
+      value="2"
+    >
+      Backend
+    </el-radio>
+    <el-radio
+      v-model="radio"
+      value="3"
+    >
+      Fullstack
+    </el-radio>
   </div>
   <div>
     <h4>Single radio select - event binding</h4>
-    <el-radio v-model="radio2" value="a" @change="radioChange">Frontend</el-radio>
-    <el-radio v-model="radio2" value="b" @change="radioChange">Backend</el-radio>
-    <el-radio v-model="radio2" value="c" @change="radioChange">Fullstack</el-radio>
+    <el-radio
+      v-model="radio2"
+      value="a"
+      @change="radioChange"
+    >
+      Frontend
+    </el-radio>
+    <el-radio
+      v-model="radio2"
+      value="b"
+      @change="radioChange"
+    >
+      Backend
+    </el-radio>
+    <el-radio
+      v-model="radio2"
+      value="c"
+      @change="radioChange"
+    >
+      Fullstack
+    </el-radio>
   </div>
   <div>
     <h4>Single radio select - radio group + event binding (recommand ~)</h4>
-    <el-radio-group v-model="radio3" @change="radioGroupChange">
-      <el-radio value="a">Frontend</el-radio>
-      <el-radio value="b">Backend</el-radio>
-      <el-radio value="c">Fullstack</el-radio>
+    <el-radio-group
+      v-model="radio3"
+      @change="radioGroupChange"
+    >
+      <el-radio value="a">
+        Frontend
+      </el-radio>
+      <el-radio value="b">
+        Backend
+      </el-radio>
+      <el-radio value="c">
+        Fullstack
+      </el-radio>
     </el-radio-group>
   </div>
   <div>
     <h4>Checkbox multi-select - checkbox group</h4>
     <el-checkbox-group v-model="checked">
-      <el-checkbox value="1">Frontend</el-checkbox>
-      <el-checkbox value="2">Backend</el-checkbox>
-      <el-checkbox value="3">Fullstack</el-checkbox>
+      <el-checkbox value="1">
+        Frontend
+      </el-checkbox>
+      <el-checkbox value="2">
+        Backend
+      </el-checkbox>
+      <el-checkbox value="3">
+        Fullstack
+      </el-checkbox>
     </el-checkbox-group>
   </div>
   <div>
     <h4>Checkbox multi-select - checkbox group + event binding (recommand ~)</h4>
-    <el-checkbox-group v-model="checked2" @change="checkboxGroupChange">
-      <el-checkbox value="1">Frontend</el-checkbox>
-      <el-checkbox value="2">Backend</el-checkbox>
-      <el-checkbox value="3">Fullstack</el-checkbox>
+    <el-checkbox-group
+      v-model="checked2"
+      @change="checkboxGroupChange"
+    >
+      <el-checkbox value="1">
+        Frontend
+      </el-checkbox>
+      <el-checkbox value="2">
+        Backend
+      </el-checkbox>
+      <el-checkbox value="3">
+        Fullstack
+      </el-checkbox>
     </el-checkbox-group>
   </div>
-  <h3 class="section">Demo for Dropdown Select</h3>
+  <h3 class="section">
+    Demo for Dropdown Select
+  </h3>
   <div>
     <h4>Dropdown select</h4>
-    <el-select v-model="dropdownSelected" placeholder="Please select">
-      <el-option label="Frontend" value="1"></el-option>
-      <el-option label="Backend" value="2"></el-option>
-      <el-option label="Fullstack" value="3"></el-option>
+    <el-select
+      v-model="dropdownSelected"
+      placeholder="Please select"
+    >
+      <el-option
+        label="Frontend"
+        value="1"
+      />
+      <el-option
+        label="Backend"
+        value="2"
+      />
+      <el-option
+        label="Fullstack"
+        value="3"
+      />
     </el-select>
   </div>
   <div>
     <h4>Dropdown select - event binding</h4>
-    <el-select v-model="dropdownSelected2" placeholder="Please select" @change="selectChange">
-      <el-option label="Frontend" value="a"></el-option>
-      <el-option label="Backend" value="b"></el-option>
-      <el-option label="Fullstack" value="c"></el-option>
+    <el-select
+      v-model="dropdownSelected2"
+      placeholder="Please select"
+      @change="selectChange"
+    >
+      <el-option
+        label="Frontend"
+        value="a"
+      />
+      <el-option
+        label="Backend"
+        value="b"
+      />
+      <el-option
+        label="Fullstack"
+        value="c"
+      />
     </el-select>
   </div>
   <div>
     <h4>Dropdown select - dynamic options loading + event binding (recommand ~)</h4>
-    <el-select v-model="dropdownSelected3" placeholder="Please select" @change="selectChange">
-      <el-option v-for="option in selectOptions.options" :label="option.label" :value="option.value" :key="option.value" />
+    <el-select
+      v-model="dropdownSelected3"
+      placeholder="Please select"
+      @change="selectChange"
+    >
+      <el-option
+        v-for="option in selectOptions.options"
+        :key="option.value"
+        :label="option.label"
+        :value="option.value"
+      />
     </el-select>
   </div>
   <div>
     <h4>Dropdown multi-select - dynamic options loading + event binding (recommand ~)</h4>
-    <el-select v-model="dropdownSelected4" multiple placeholder="Please select" @change="selectChange">
-      <el-option v-for="option in selectOptions.multiSelectOptions" :label="option.label" :value="option.value" :key="option.value" />
+    <el-select
+      v-model="dropdownSelected4"
+      multiple
+      placeholder="Please select"
+      @change="selectChange"
+    >
+      <el-option
+        v-for="option in selectOptions.multiSelectOptions"
+        :key="option.value"
+        :label="option.label"
+        :value="option.value"
+      />
     </el-select>
   </div>
-  <h3 class="section">Demo for DatePicker</h3>
+  <h3 class="section">
+    Demo for DatePicker
+  </h3>
   <div>
     <h4>DatePicker</h4>
-    <el-date-picker v-model="date" type="datetime" value-format="YYYY-MM-DD HH:mm:ss" placeholder="Choose a date" @change="datechange">
-    </el-date-picker>
+    <el-date-picker
+      v-model="date"
+      type="datetime"
+      value-format="YYYY-MM-DD HH:mm:ss"
+      placeholder="Choose a date"
+      @change="datechange"
+    />
   </div>
-  <h3 class="section">Demo for Form + dialog modal view</h3>
+  <h3 class="section">
+    Demo for Form + dialog modal view
+  </h3>
   <div>
     <h4>Form with items + dialog modal view</h4>
-    <el-button @click="dialog = true">Open Dialog</el-button>
-    <el-dialog v-model="dialog" width="600" title="From Dialog" draggable @close="dialogClose">
-      <el-form ref="formRef" :model="form" :rules="formRules">
-        <el-form-item label="Text" prop="text">
-          <el-input v-model="form.text" placeholder="Enter text content"></el-input>
+    <el-button @click="dialog = true">
+      Open Dialog
+    </el-button>
+    <el-dialog
+      v-model="dialog"
+      width="600"
+      title="From Dialog"
+      draggable
+      @close="dialogClose"
+    >
+      <el-form
+        ref="formRef"
+        :model="form"
+        :rules="formRules"
+      >
+        <el-form-item
+          label="Text"
+          prop="text"
+        >
+          <el-input
+            v-model="form.text"
+            placeholder="Enter text content"
+          />
         </el-form-item>
-        <el-form-item label="Occupation Selector" prop="occupation">
+        <el-form-item
+          label="Occupation Selector"
+          prop="occupation"
+        >
           <el-radio-group v-model="form.occupation">
-            <el-radio value="1">Frontend</el-radio>
-            <el-radio value="2">Backend</el-radio>
-            <el-radio value="3">Fullstack</el-radio>
+            <el-radio value="1">
+              Frontend
+            </el-radio>
+            <el-radio value="2">
+              Backend
+            </el-radio>
+            <el-radio value="3">
+              Fullstack
+            </el-radio>
           </el-radio-group>
         </el-form-item>
-        <el-form-item label="Date Selector" prop="date">
-          <el-date-picker v-model="form.date" type="datetime" value-format="YYYY-MM-DD HH:mm:ss" placeholder="Choose a date" />
+        <el-form-item
+          label="Date Selector"
+          prop="date"
+        >
+          <el-date-picker
+            v-model="form.date"
+            type="datetime"
+            value-format="YYYY-MM-DD HH:mm:ss"
+            placeholder="Choose a date"
+          />
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="addFormData(formRef)">Add Form Data</el-button>
-          <el-button @click="resetForm(formRef)">Reset Form</el-button>
+          <el-button
+            type="primary"
+            @click="addFormData(formRef)"
+          >
+            Add Form Data
+          </el-button>
+          <el-button @click="resetForm(formRef)">
+            Reset Form
+          </el-button>
         </el-form-item>
       </el-form>
     </el-dialog>
   </div>
-  <h3 class="section">Demo for Pagination</h3>
+  <h3 class="section">
+    Demo for Pagination
+  </h3>
   <div>
     <h4>Pagination</h4>
-    <el-pagination layout="prev, pager, next, jumper, total" :page-size="5" :total="50" background @current-change="currentPageChange" />
+    <el-pagination
+      layout="prev, pager, next, jumper, total"
+      :page-size="5"
+      :total="50"
+      background
+      @current-change="currentPageChange"
+    />
   </div>
-  <h3 class="section">Demo for Table</h3>
+  <h3 class="section">
+    Demo for Table
+  </h3>
   <div>
     <h4>Table view</h4>
-    <el-table :data="table.arrData" border>
+    <el-table
+      :data="table.arrData"
+      border
+    >
       <el-table-column type="selection" />
-      <el-table-column label="ID" prop="id"></el-table-column>
-      <el-table-column label="Name" prop="name"></el-table-column>
-      <el-table-column label="Web" prop="web"></el-table-column>
-      <el-table-column label="Date" prop="date"></el-table-column>
+      <el-table-column
+        label="ID"
+        prop="id"
+      />
+      <el-table-column
+        label="Name"
+        prop="name"
+      />
+      <el-table-column
+        label="Web"
+        prop="web"
+      />
+      <el-table-column
+        label="Date"
+        prop="date"
+      />
     </el-table>
   </div>
-  <br />
+  <br>
 </template>
 <script lang="ts" setup>
+  import { CheckboxValueType, FormInstance, FormRules, TabPaneName, TabsPaneContext, ElMessage, ElMessageBox, ElNotification } from 'element-plus';
   import { computed, reactive, ref } from 'vue';
   // We use dynamic import - unplugins, so we don't need these imports
   // import type { ElMessage, ElMessageBox, ElNotification, FormInstance, FormRules } from 'element-plus';
@@ -354,7 +579,7 @@
   const addFormData = async (formEl: FormInstance | undefined) => {
     console.log("Data - try for submission: ", getFormValues())
     if (!formEl) return ;
-    await formEl.validate(async (valid: boolean, fields: any) => {
+    await formEl.validate(async (valid: boolean, fields: Record<string, any> | undefined) => {
       if (valid) console.log('😇😇😇😇😇, trigger another API call for sumission');
       else console.log('😔😔😔😔😔', fields);
     });

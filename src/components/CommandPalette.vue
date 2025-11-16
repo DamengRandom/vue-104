@@ -21,6 +21,9 @@ onUnmounted(() => {
 </script>
 <template>
   <div v-if="active">
-    <input type="text" placeholder="Command Palette" />
+    <input
+      type="text"
+      placeholder="Command Palette"
+    >
   </div>
 </template>

@@ -14,11 +14,18 @@ watch(numbers, () => {
 }, { deep: true }); // { deep: true } is necessary here because we are mutating array elements, eg: adding new number for the array
 </script>
 <template>
-    <h2>Watch Array Mistake Example</h2>
-    <button @click="addNumber">Add Random Number</button>
-    <ul>
-        <li v-for="(number, index) in numbers" :key="`${index}-${number}`">{{ number }}</li>
-    </ul>
+  <h2>Watch Array Mistake Example</h2>
+  <button @click="addNumber">
+    Add Random Number
+  </button>
+  <ul>
+    <li
+      v-for="(number, index) in numbers"
+      :key="`${index}-${number}`"
+    >
+      {{ number }}
+    </li>
+  </ul>
 </template>
 <!-- <script setup lang="ts">
 import { onMounted, ref, watch } from 'vue';

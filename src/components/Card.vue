@@ -10,8 +10,11 @@ defineProps({
 </script>
 
 <template>
-  <div :class="bg" class="p-6 rounded-lg shadow-md">
-    <slot></slot>
+  <div
+    :class="bg"
+    class="p-6 rounded-lg shadow-md"
+  >
+    <slot />
     <!-- In React, we have `children`, vue we got slot ~ -->
   </div>
 </template>

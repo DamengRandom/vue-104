@@ -30,22 +30,31 @@
   <div class="bg-theme rounded-xl shadow-md relative">
     <div class="p-4">
       <div class="mb-6">
-        <div class="text-gray-600 my-2">{{ job.type }}</div>
-        <h3 class="text-xl font-bold">{{ job.title }}</h3>
+        <div class="text-gray-600 my-2">
+          {{ job.type }}
+        </div>
+        <h3 class="text-xl font-bold">
+          {{ job.title }}
+        </h3>
       </div>
 
       <div class="mb-5">
         {{ trucatedDescription }}
-        <span class="text-white cursor-pointer text-sm" @click="toggleFullDescription">{{ showFullDescription ? 'Less' : 'More' }}</span>
+        <span
+          class="text-white cursor-pointer text-sm"
+          @click="toggleFullDescription"
+        >{{ showFullDescription ? 'Less' : 'More' }}</span>
       </div>
 
-      <h3 class="text-theme mb-2">{{ job.salary }} / Year</h3>
+      <h3 class="text-theme mb-2">
+        {{ job.salary }} / Year
+      </h3>
 
-      <div class="border border-gray-100 mb-5"></div>
+      <div class="border border-gray-100 mb-5" />
 
       <div class="flex flex-col lg:flex-row justify-between mb-4">
         <div class="text-base mb-3">
-          <i class="pi pi-map-marker text-base"></i>
+          <i class="pi pi-map-marker text-base" />
           {{ job.location }}
         </div>
         <RouterLink

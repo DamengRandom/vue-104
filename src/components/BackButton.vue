@@ -9,7 +9,7 @@
         to="/jobs"
         class="text-base hover:text-base flex items-center"
       >
-        <i class="fas fa-arrow-left mr-2"></i> Back to Job Listings
+        <i class="fas fa-arrow-left mr-2" /> Back to Job Listings
       </RouterLink>
     </div>
   </section>

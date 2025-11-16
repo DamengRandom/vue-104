@@ -18,11 +18,16 @@
           class="flex flex-1 items-center justify-center md:items-stretch md:justify-start"
         >
           <!-- Logo -->
-          <RouterLink class="flex flex-shrink-0 items-center mr-4" to="/">
-            <img class="h-10 w-auto" :src="logoFile" alt="Vue Jobs" />
-            <span class="hidden md:block text-white text-2xl font-bold ml-2"
-              >Vue Jobs</span
+          <RouterLink
+            class="flex flex-shrink-0 items-center mr-4"
+            to="/"
+          >
+            <img
+              class="h-10 w-auto"
+              :src="logoFile"
+              alt="Vue Jobs"
             >
+            <span class="hidden md:block text-white text-2xl font-bold ml-2">Vue Jobs</span>
           </RouterLink>
           <div class="md:ml-auto">
             <div class="flex space-x-2">
@@ -30,32 +35,44 @@
                 to="/"
                 class="text-white hover:bg-base hover:text-white rounded-md px-3 py-2"
                 :class="isActiveTab('/') ? 'bg-base' : ''"
-                >Home</RouterLink>
+              >
+                Home
+              </RouterLink>
               <RouterLink
                 to="/jobs"
                 class="text-white hover:bg-base hover:text-white rounded-md px-3 py-2"
                 :class="isActiveTab('/jobs') ? 'bg-base' : ''"
-                >Jobs</RouterLink>
+              >
+                Jobs
+              </RouterLink>
               <RouterLink
                 to="/jobs/add"
                 class="text-white hover:bg-base hover:text-white rounded-md px-3 py-2"
                 :class="isActiveTab('/jobs/add') ? 'bg-base' : ''"
-                >Add Job</RouterLink>
+              >
+                Add Job
+              </RouterLink>
               <RouterLink
                 to="/element-plus"
                 class="text-white hover:bg-base hover:text-white rounded-md px-3 py-2"
                 :class="isActiveTab('/element-plus') ? 'bg-base' : ''"
-                >Element Plus Study</RouterLink>
+              >
+                Element Plus Study
+              </RouterLink>
               <RouterLink
                 to="/avoid-mistake"
                 class="text-white hover:bg-base hover:text-white rounded-md px-3 py-2"
                 :class="isActiveTab('/avoid-mistake') ? 'bg-base' : ''"
-                >Avoid Mistake</RouterLink>
+              >
+                Avoid Mistake
+              </RouterLink>
               <RouterLink
                 to="/vue-table-test"
                 class="text-white hover:bg-base hover:text-white rounded-md px-3 py-2"
                 :class="isActiveTab('/vue-table-test') ? 'bg-base' : ''"
-                >Vue Table Test</RouterLink>
+              >
+                Vue Table Test
+              </RouterLink>
             </div>
           </div>
         </div>

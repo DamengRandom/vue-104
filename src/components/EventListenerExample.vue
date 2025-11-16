@@ -7,7 +7,10 @@ const enabled = ref(true)
 <template>
   <p>Cleaning Up Global Event Listeners Example</p>
   <label>
-    <input type="checkbox" v-model="enabled" />
+    <input
+      v-model="enabled"
+      type="checkbox"
+    >
     {{ enabled ? 'Enabled' : 'Disabled' }}
   </label>
 

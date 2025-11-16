@@ -26,11 +26,17 @@ defineEmits<{
   <form @submit.prevent="$emit('update:modelValue', { ...localValue })">
     <div>
       <label for="email">Email</label>
-      <input type="email" v-model="localValue.email" />
+      <input
+        v-model="localValue.email"
+        type="email"
+      >
     </div>
     <div>
       <label for="password">Password</label>
-      <input type="password" v-model="localValue.password" />
+      <input
+        v-model="localValue.password"
+        type="password"
+      >
     </div>
 
     <button>Login</button>

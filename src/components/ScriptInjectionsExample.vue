@@ -19,11 +19,19 @@ function addComment() {
 </script>
 <template>
   <form @submit.prevent="addComment">
-    <textarea v-model="newComment" cols="30" rows="10"></textarea>
-    <br />
+    <textarea
+      v-model="newComment"
+      cols="30"
+      rows="10"
+    />
+    <br>
     <button>Submit</button>
   </form>
   <ul>
-    <li v-for="comment in comments" :key="comment" v-html="comment"></li>
+    <li
+      v-for="comment in comments"
+      :key="comment"
+      v-html="comment"
+    />
   </ul>
 </template>
