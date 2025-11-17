@@ -54,7 +54,12 @@ const router = createRouter({
       path: '/vue-table-test',
       name: 'vue-table-test',
       component: () => import('@/views/VueTableDemo/PeopleTableDemo.vue')
-    }
+    },
+    {
+      path: '/tanstack-vue-query',
+      name: 'tanstack-vue-query',
+      component: () => import('@/views/TanstackVueQuery/index.vue')
+    },
   ],
 });
 

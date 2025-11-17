@@ -63,5 +63,8 @@ const columnsPeople = [
 
 </script>
 <template>
-  <GenericTable :data="people" :columns="columnsPeople" />
+  <GenericTable
+    :data="people"
+    :columns="columnsPeople"
+  />
 </template>

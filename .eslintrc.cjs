@@ -19,6 +19,8 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
     'no-console': ['warn', { allow: ['warn', 'error'] }],
     '@typescript-eslint/no-explicit-any': 'off',
-    '@typescript-eslint/no-empty-object-type': 'off'
+    '@typescript-eslint/no-empty-object-type': 'off',
+    '@typescript-eslint/no-non-null-assertion': 'off',
+    '@typescript-eslint/no-console': 'off',
   }
 }

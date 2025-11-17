@@ -56,11 +56,12 @@ const vueTable = useVueTable({
           <div class="my-4">
             <label>Filter: </label>
             <input
-              type="text"
               v-model="filterBy"
+              type="text"
               class="px-2 py-2 border border-gray-300 rounded"
               placeholder="Filter by full name, email, title, or role"
-            />
+              @input="vueTable.setGlobalFilter($event.target.value.trim())"
+            >
           </div>
           <table class="min-w-full divide-y divide-gray-300">
             <thead>

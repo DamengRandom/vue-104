@@ -1,10 +1,9 @@
 <script setup>
   import logo from '@/assets/img/logo.png';
-  import { ref, computed } from 'vue';
+  import { ref } from 'vue';
   import { RouterLink, useRoute } from 'vue-router';
 
   const logoFile = ref(logo);
-  const currentPath = ref('/');
   const route = useRoute();
 
   const isActiveTab = (clickedPath) => route.path === clickedPath;
@@ -72,6 +71,13 @@
                 :class="isActiveTab('/vue-table-test') ? 'bg-base' : ''"
               >
                 Vue Table Test
+              </RouterLink>
+              <RouterLink
+                to="/tanstack-vue-query"
+                class="text-white hover:bg-base hover:text-white rounded-md px-3 py-2"
+                :class="isActiveTab('/tanstack-vue-query') ? 'bg-base' : ''"
+              >
+                Tanstack Vue Query Test
               </RouterLink>
             </div>
           </div>
